@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>httpPage with SearhBox</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/httpexample.css">
+    <script type="text/javascript" src="JS/angular.min.js"></script>
+    <!--        <script type="text/javascript" src="JS/angular-route.min.js"></script>-->
+    <script type="text/javascript" src="JS/controller.js"></script>
+</head>
+
+<body ng-app="mainApp">
+    <div ng-controller="students">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid row">
+                <div class="navbar-header">
+                    <div class="title"><a class="navbar-brand" href="#"><b>Student Details</b></a></div>
+                </div>
+            </div>
+                <div class="col-md-12 ser">
+                <div id="searchBoxes">
+                    <div class="col-md-3"><input type=text class="form-control" id="search" ng-model="globalSearch.$" placeholder="Search All"></div>
+                    <div class="col-md-3"><input type=text class="form-control" id="serName" ng-model="globalSearch.Name" placeholder="Search by Name"></div>
+                    <div class="col-md-3"><input type=text class="form-control" id="serRoll" ng-model="globalSearch.RollNo" placeholder="Search by Roll No"></div>
+                    <div class="col-md-3"><input type=text class="form-control" id="serPerc" ng-model="globalSearch.Percentage" placeholder="Search by Percentage"></div>
+            </div>
+        </nav>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="student in students | filter:globalSearch">
+                <td> {{student.Name}}</td>
+                <td> {{student.RollNo}}</td>
+                <td> {{student.Percentage}}</td>
+            </tr>
+
+        </table>
+
+        <ul class="nav navbar-nav">
+            <ul class="list-groups">
+                <li ng-repeat="student in students | filter:searchBox">
+                    {{ student.Name+':'+student.RollNo+':'+student.Percentage }}
+                </li>
+            </ul>
+        </ul>
+    </div>
+</body>
+
+</html>
